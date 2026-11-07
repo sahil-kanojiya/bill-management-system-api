@@ -43,3 +43,7 @@ build/
 *.txt
 !.mvn/wrapper/maven-wrapper.properties
 !.mvn/wrapper/maven-wrapper.jar
+
+# Whitelist GitHub configurations
+!.github/
+!.github/**
