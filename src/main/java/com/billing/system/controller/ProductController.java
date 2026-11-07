@@ -1,0 +1,37 @@
+package com.billing.system.controller;
+
+
+import com.billing.system.model.dto.ProductStockRequestDto;
+import com.billing.system.model.Product;
+import com.billing.system.repository.ProductRepository;
+import com.billing.system.service.ProductsService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/products")
+@RequiredArgsConstructor
+public class ProductController {
+
+    private final ProductsService productsService;
+    private final ProductRepository productRepository;
+
+    @PostMapping
+    public ResponseEntity<?> createProduct(@RequestBody ProductStockRequestDto product) {
+        try{
+            return new ResponseEntity<>(productsService.createProduct(product), HttpStatus.CREATED);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error placing order: " + e.getMessage());
+        }
+    }
+
+    @GetMapping
+    public List<Product> all(){
+        return productRepository.findAll();
+    }
+
+}
