@@ -1,4 +1,4 @@
-package com.billing.system.service.scheduleTasks;
+package com.billing.system.service.tasks;
 
 import com.billing.system.model.Bill;
 import com.billing.system.repository.BillRepository;
